@@ -1,0 +1,23 @@
+<div style="width: 250px; top: 0px; position: absolute;">
+	<strong>Average Rating:</strong>
+	<img src="../<%= @img %>" width="150px" height="30px"></img>
+	<% if not @pin.avg_rating %>
+		<% if @pin.temp_avg_rating %>
+			<%= @pin.temp_avg_rating %><br />
+			(Note that this is a predicted rating based on the content of the Pin's comments on Pinterest). You can be the first to rate this pin!
+		<% else %>
+			You can be the first to rate this pin!
+		<% end %>
+	<% end %>
+	<%= render @pin.ratings.desc if @pin.ratings %>
+</div>
+
+<div style="position: fixed; left: 300px; top: 0px; width: 200px;">
+	<% if current_user %>
+		<strong>Add your review</strong><br />
+		Not <%= current_user.name %>? <a href='/logout'>Log Out</a>
+		<%= render 'ratings/form' %>
+	<% else %>
+		<h2><a href='/login'>Log in</a> or <a href='/signup'>sign up</a> to write your own review!</h2>
+	<% end %>
+</div>

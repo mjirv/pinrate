@@ -1,0 +1,19 @@
+{
+	"name": "Pinrate",
+	"version": "1.0",
+	"description": "Rate and review recipes, DIY ideas, and more!",
+	"browser_action": {
+		"default_icon": "pinstar.png",
+		"default_popup": "index.html"
+	},
+	"manifest_version": 2,
+	"permissions": [
+		"activeTab"
+	],
+	"content_scripts": [
+		{
+			"matches": ["https://www.pinterest.com/pin/*"],
+			"js": ["jquery-3.1.0.min.js", "injectedScript.js"]
+		}
+	]
+}
