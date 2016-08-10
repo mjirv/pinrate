@@ -29,7 +29,7 @@ controls.style.bottom = "0px";
 
 var id = getId();
 
-iframe.src = 'http://localhost:3000/pins/' + id;
+iframe.src = 'http://localhost:3000/pins/' + id + '?comments=';
 iframe.style.width = "100%";
 iframe.style.height = "100%";
 iframe.style.maxWidth = "500px";
@@ -68,12 +68,11 @@ function getId() {
 
 // I should make this better because it is janky
 window.onmousedown = function() {
-	console.log('yay');
 	setTimeout(function() {
 		if(id != getId()) {
 			console.log('ok');
 			id = getId();
-			iframe.src = 'http://localhost:3000/pins/' + id;
+			iframe.src = 'http://localhost:3000/pins/' + id + '?comments=';
 		};
 	}, 100);
 };

@@ -8,6 +8,8 @@
 	},
 	"manifest_version": 2,
 	"permissions": [
+		"webNavigation",
+		"*://*.pinterest.com/",
 		"activeTab"
 	],
 	"content_scripts": [

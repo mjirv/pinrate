@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Pinrate - Submit your Rating!</title>
+		<style>
+			body {
+				width: 350px;
+				text-align: center;
+			}
+		</style>
+		<script src="submit.js"></script>
+	</head>
+
+	<body>
+		<h2>Submit your rating</h2>
+		<form action="http://localhost:3000/ratings" method="post">
+			<select name="rating">
+				<option value=1>1 (needs improvement)</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+				<option value=5 selected>5 (excellent!)</option>
+			</select>
+			<br /><br />
+			<textarea name="review" rows="6">
+				Leave your review here!
+			</textarea>
+			<br /><br />
+			<input type="submit" value="Submit Rating">
+		</form>
+	</body>
+</html>

@@ -1,6 +1,8 @@
 <div style="width: 250px; top: 0px; position: absolute;">
 	<strong>Average Rating:</strong>
+	<% if @img %>
 	<img src="../<%= @img %>" width="150px" height="30px"></img>
+	<% end %>
 	<% if not @pin.avg_rating %>
 		<% if @pin.temp_avg_rating %>
 			<%= @pin.temp_avg_rating %><br />
