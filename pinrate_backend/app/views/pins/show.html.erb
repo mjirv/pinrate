@@ -1,25 +1,74 @@
-<div style="width: 250px; top: 0px; position: absolute;">
-	<strong>Average Rating:</strong>
-	<% if @img %>
-	<img src="../<%= @img %>" width="150px" height="30px"></img>
-	<% end %>
-	<% if not @pin.avg_rating %>
-		<% if @pin.temp_avg_rating %>
-			<%= @pin.temp_avg_rating %><br />
-			(Note that this is a predicted rating based on the content of the Pin's comments on Pinterest). You can be the first to rate this pin!
-		<% else %>
-			You can be the first to rate this pin!
-		<% end %>
-	<% end %>
-	<%= render @pin.ratings.desc if @pin.ratings %>
-</div>
+<body>
+<style>
+	::-webkit-scrollbar {
+		width: 0px;
+	}
+	body {
+		font-family: "Helvetica Neue","Helvetica","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ","Meiryo","ＭＳ Ｐゴシック",arial,sans-serif;
+		color: white;
+		font-size: 13px;
+		background-color: #555;
+	}
+	.rating {
+		background-color: white;
+		color: rgb(33, 25, 34);
+		padding: 13px;
+		border-radius: 4px;
+		border: 1px solid #a7a7a7;
+	}
+	a {
+		background-color: #bd081c;
+		color: white;
+		text-decoration: none;
+		display: inline block;
+		padding: 4px;
+		border-radius: 4px;
+	}
+	a:hover {
+		background-color: #ab171e;
+	}
 
-<div style="position: fixed; left: 300px; top: 0px; width: 200px;">
-	<% if current_user %>
-		<strong>Add your review</strong><br />
+	input {
+		background-color: #bd081c;
+		color: white;
+		text-decoration: none;
+		display: inline block;
+		padding: 6px;
+		border-radius: 4px;
+		border: 0px;
+		cursor: pointer;
+	}
+	input:hover {
+		background-color: #ab171e;
+	}
+</style>
+<div style="padding: 10px">
+	<div style="z-index:9999;" class="rating">
+		<strong>Average Rating:</strong>
+		<br />
+		<% if @img %>
+		<img src="../<%= @img %>" width="150px" height="30px"></img>
+		<% end %>
+		<% if not @pin.avg_rating %>
+			<% if @pin.temp_avg_rating %>
+				<%= @pin.temp_avg_rating %><br />
+				(Note that this is a predicted rating based on the content of the Pin's comments on Pinterest). You can be the first to rate this pin!
+			<% else %>
+				You can be the first to rate this pin!
+			<% end %>
+		<% end %>
+		<br />
+		<% if current_user %>
+			<strong>Add your review</strong><br />
+			<%= render 'ratings/form' %>
+		<% else %>
+			<h2><a href='/login'>Log in</a> or <a href='/signup'>sign up</a> to write your own review!</h2>
+		<% end %>
+		<br />
 		Not <%= current_user.name %>? <a href='/logout'>Log Out</a>
-		<%= render 'ratings/form' %>
-	<% else %>
-		<h2><a href='/login'>Log in</a> or <a href='/signup'>sign up</a> to write your own review!</h2>
-	<% end %>
+	</div>
+	<div style="padding-bottom: 20px">
+		<%= render @pin.ratings.desc if @pin.ratings %>
+	</div>
 </div>
+</body>

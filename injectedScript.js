@@ -5,17 +5,14 @@ var header = document.createElement("h2");
 var iframe = document.createElement("iframe");
 
 div.style.position = "fixed";
-div.style.bottom = "0px";
-div.style.width = "500px";
-div.style.height = "250px";
-div.style.left = "0";
-div.style.right = "0";
+div.style.right = "0px";
+div.style.top = "54px"; //hard-coded to sit below main status bar
+div.style.width = "20%";
+div.style.height = "100%";
 div.style.maxWidth = "500px";
-div.style.margin = "0 auto"; 
-div.style.backgroundColor = "white";
-div.style.zIndex = "9998";
+div.style.minWidth = "250px";
+div.style.zIndex = "103";
 div.id = "sliderDiv";
-div.style.opacity = "0.9";
 
 //button.style.position = "fixed";
 button.style.width = "50px";
@@ -34,6 +31,7 @@ iframe.style.width = "100%";
 iframe.style.height = "100%";
 iframe.style.maxWidth = "500px";
 iframe.style.border = "0";
+iframe.style.overflow = "hidden";
 
 button.onclick = function() {
 	$('#sliderDiv').slideToggle('slow');
@@ -41,10 +39,10 @@ button.onclick = function() {
 
 //header.innerText = document.getElementsByClassName('richPinNameLink')[0].innerText;
 
-div.appendChild(button);
+//div.appendChild(button);
 //div.appendChild(header);
 div.appendChild(iframe);
-document.body.appendChild(div);
+document.body.getElementsByClassName('mainContainer')[0].appendChild(div);
 //document.body.appendChild(controls);
 button.innerText="X";
 
